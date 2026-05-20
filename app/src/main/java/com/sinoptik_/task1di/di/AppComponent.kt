@@ -7,7 +7,9 @@ import dagger.Component
 
 @AppScope
 //@Component(modules = [AppModule::class], dependencies = [CoreComponent::class])
-@Component(dependencies = [CoreComponent::class, FeatureHomeComponent::class])
+@Component(
+    dependencies = [CoreComponent::class, FeatureHomeComponent::class]
+)
 interface AppComponent {
     fun inject(activity: MainActivity)
 

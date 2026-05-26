@@ -7,14 +7,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.sinoptik_.core.exam_practice.LogProvider
 import com.sinoptik_.core.network.UserRepository
-import com.sinoptik_.feature_home.di.exam_practice.FeatureComponentProvider
+import com.sinoptik_.feature_home.di.exam_practice.FeatureUserComponentHolder
 import javax.inject.Inject
 
 class FeatureActivity : AppCompatActivity() {
 
     @Inject
     lateinit var logger: LogProvider
-
     @Inject
     lateinit var userRepo: UserRepository
 
@@ -22,8 +21,8 @@ class FeatureActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        (application as FeatureComponentProvider)
-            .provideFeatureComponent()
+        FeatureUserComponentHolder
+            .get()
             .inject(this)
 
         userRepo.getUsers().forEach { user ->

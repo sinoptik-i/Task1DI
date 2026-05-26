@@ -18,7 +18,7 @@ abstract class UserModule {
 
 @Component(
     modules = [UserModule::class],
-    dependencies = [LogComponent::class]
+    dependencies = [FeatureDeps::class]
 )
 interface FeatureUserComponent {
     fun inject(featureActivity: FeatureActivity)
